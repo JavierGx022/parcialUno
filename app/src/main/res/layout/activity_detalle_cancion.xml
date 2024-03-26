@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_gravity="center_horizontal">
+
+
+
+    <TextView
+        android:id="@+id/txtNombreCancion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nombre Canción"
+        android:textSize="26dp"
+        android:textColor="@color/black"
+        android:fontFamily="sans-serif-black"
+        android:layout_marginTop="55dp"
+        />
+
+    <TextView
+        android:id="@+id/txtLetraCancion"
+        android:layout_width="wrap_content"
+        android:layout_height="500dp"
+        android:inputType="textMultiLine"
+        />
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="15dp"
+        />
+
+    <Button
+        android:id="@+id/btnDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:background="@color/btnDelete"
+        android:text="Eliminar"
+        android:layout_gravity="center_horizontal"/>
+
+</LinearLayout>
+
+

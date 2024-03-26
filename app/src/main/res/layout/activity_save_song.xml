@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_gravity="center_horizontal"
+    >
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:text="Guardar letra de canción"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/black"
+        android:layout_marginTop="50dp"
+        android:textSize="18dp"
+        />
+
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nombre"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        />
+
+    <EditText
+        android:id="@+id/txtNombre"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:background="@drawable/edittext_border"
+        />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Letra"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        />
+    <EditText
+        android:id="@+id/txtLetra"
+        android:layout_width="350dp"
+        android:layout_height="158dp"
+        android:ems="10"
+        android:background="@drawable/edittext_border"
+        android:layout_gravity="center_horizontal"
+        android:inputType="textMultiLine" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp"/>
+
+    <Button
+        android:id="@+id/btnGuardar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Guardar"
+        android:background="@color/btn"
+        android:textSize="18dp"
+        android:textColor="@color/white"/>
+
+</LinearLayout>
+
+
+

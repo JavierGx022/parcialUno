@@ -9,4 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="blue">#02AFFA </color>
     <color name="btn">#13B99E</color>
+    <color name="btnDelete">#F7615A</color>
+
 </resources>

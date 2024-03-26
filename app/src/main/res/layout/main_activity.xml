@@ -12,7 +12,7 @@
         android:layout_marginTop="50dp"
         android:background="@color/btn"
         android:layout_gravity="center_horizontal"
-        android:textColor="@color/white"/>
+        android:textColor="@color/white" />
 
     <Space
         android:layout_width="match_parent"
@@ -36,4 +36,35 @@
         android:background="@color/btn"
         android:layout_gravity="center_horizontal"
         android:textColor="@color/white"/>
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="Nombre canción"/>
+    <EditText
+        android:id="@+id/txtBuscar"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edittext_border"/>
+
+    <Button
+        android:id="@+id/btnBuscar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Buscar"
+        android:background="@color/blue"
+        android:textColor="@color/white"/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp"/>
+
+<ListView
+    android:id="@+id/listCanciones"
+    android:layout_width="match_parent"
+    android:layout_height="320dp"/>
 </LinearLayout>
