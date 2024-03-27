@@ -19,44 +19,42 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.corteUno.Parcial.Logica.Cancion
 import com.corteUno.Parcial.Logica.SharedPreferencesManager
-import com.corteUno.Parcial.ui.theme.ParcialletrasInstrumentoTheme
 
 class MainActivity : ComponentActivity() {
     private lateinit var sharedPreferencesManager: SharedPreferencesManager
+    private lateinit var cancionesFiltradas: List<String> // Agregar una variable para almacenar las canciones filtradas
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
 
-        //Accion de boton guardar letra
-        var btnGuardarLetra= findViewById<Button>(R.id.btnLetras)
-        btnGuardarLetra.setOnClickListener {
-            val intent = Intent(this, SaveSong::class.java)
-            startActivity(intent)
-        }
-
-        //Lista de canciones
+        // Inicializar SharedPreferencesManager
         sharedPreferencesManager = SharedPreferencesManager(this)
-        var list= findViewById<ListView>(R.id.listCanciones)
-        val cancionesGuardadas = sharedPreferencesManager.obtenerNombresCancionesGuardadas()
-        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, cancionesGuardadas)
+
+        // Obtener todas las canciones guardadas
+        val todasLasCanciones = sharedPreferencesManager.obtenerNombresCancionesGuardadas()
+
+        // Inicializar ListView y Adapter con todas las canciones
+        val list = findViewById<ListView>(R.id.listCanciones)
+        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, todasLasCanciones)
         list.adapter = adapter
+
+        // Definir acción de clic en la lista
         list.setOnItemClickListener { _, _, position, _ ->
-            val cancion = cancionesGuardadas[position]
-            mostrarDetalleCancion(cancion)
+            val nombreCancion = cancionesFiltradas[position] // Utilizar la posición en la lista filtrada
+            mostrarDetalleCancion(nombreCancion)
         }
 
-        //Boton buscar
-        var btnBuscar= findViewById<Button>(R.id.btnBuscar)
+        // Configurar el botón de búsqueda
+        val btnBuscar = findViewById<Button>(R.id.btnBuscar)
         btnBuscar.setOnClickListener {
-            var txtBuscar= findViewById<EditText>(R.id.txtBuscar)
-            var nC= txtBuscar.text.toString()
-              buscarCancionPorNombre(nC)
+            val txtBuscar = findViewById<EditText>(R.id.txtBuscar)
+            val nC = txtBuscar.text.toString()
+            buscarCancionPorNombre(nC, todasLasCanciones)
         }
-
     }
 
     private fun mostrarDetalleCancion(nombreCancion: String) {
-
         val letraCancion = sharedPreferencesManager.obtenerLetraCancion(nombreCancion)
 
         if (letraCancion != null) {
@@ -70,16 +68,15 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    private fun buscarCancionPorNombre(nombreCancion: String) {
-        val todasLasCanciones = sharedPreferencesManager.obtenerNombresCancionesGuardadas()
-        val cancionesFiltradas = todasLasCanciones.filter { it.contains(nombreCancion, ignoreCase = true) }
+    private fun buscarCancionPorNombre(nombreCancion: String, todasLasCanciones: List<String>) {
+        val letra = sharedPreferencesManager.obtenerLetraCancion(nombreCancion)
+        cancionesFiltradas = todasLasCanciones.filter { it.contains(nombreCancion, ignoreCase = true) }
 
         // Actualizar el adaptador del ListView con las canciones filtradas
         val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, cancionesFiltradas)
-        val list= findViewById<ListView>(R.id.listCanciones)
+        val list = findViewById<ListView>(R.id.listCanciones)
         list.adapter = adapter
     }
-
-
 }
+
 
