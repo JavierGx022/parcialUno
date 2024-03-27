@@ -20,37 +20,52 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.corteUno.Parcial.Logica.Cancion
 import com.corteUno.Parcial.Logica.SharedPreferencesManager
 
+
 class MainActivity : ComponentActivity() {
     private lateinit var sharedPreferencesManager: SharedPreferencesManager
-    private lateinit var cancionesFiltradas: List<String> // Agregar una variable para almacenar las canciones filtradas
-
+    private lateinit var cancionesFiltradas: List<String>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
 
-        // Inicializar SharedPreferencesManager
-        sharedPreferencesManager = SharedPreferencesManager(this)
-
-        // Obtener todas las canciones guardadas
-        val todasLasCanciones = sharedPreferencesManager.obtenerNombresCancionesGuardadas()
-
-        // Inicializar ListView y Adapter con todas las canciones
-        val list = findViewById<ListView>(R.id.listCanciones)
-        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, todasLasCanciones)
-        list.adapter = adapter
-
-        // Definir acción de clic en la lista
-        list.setOnItemClickListener { _, _, position, _ ->
-            val nombreCancion = cancionesFiltradas[position] // Utilizar la posición en la lista filtrada
-            mostrarDetalleCancion(nombreCancion)
+        //Accion de boton guardar letra
+        var btnGuardarLetra= findViewById<Button>(R.id.btnLetras)
+        btnGuardarLetra.setOnClickListener {
+            val intent = Intent(this, SaveSong::class.java)
+            startActivity(intent)
+        }
+        //Accion de boton practica tambor
+        var btnPracticaTambor= findViewById<Button>(R.id.btnPTambor)
+        btnPracticaTambor.setOnClickListener {
+            val intent = Intent(this, practicaTambor::class.java)
+            startActivity(intent)
         }
 
-        // Configurar el botón de búsqueda
-        val btnBuscar = findViewById<Button>(R.id.btnBuscar)
+        //Accion de boton practica maraca
+        var btnPracticaMaraca= findViewById<Button>(R.id.btnPMaraca)
+        btnPracticaMaraca.setOnClickListener {
+            val intent = Intent(this, maraca::class.java)
+            startActivity(intent)
+        }
+
+        sharedPreferencesManager = SharedPreferencesManager(this)
+        cancionesFiltradas = sharedPreferencesManager.obtenerNombresCancionesGuardadas()
+        //Lista de canciones
+        var list = findViewById<ListView>(R.id.listCanciones)
+        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, cancionesFiltradas)
+        list.adapter = adapter
+        list.setOnItemClickListener { _, _, position, _ ->
+            val cancion = cancionesFiltradas[position]
+            mostrarDetalleCancion(cancion)
+        }
+
+        //Boton buscar
+        var btnBuscar= findViewById<Button>(R.id.btnBuscar)
         btnBuscar.setOnClickListener {
-            val txtBuscar = findViewById<EditText>(R.id.txtBuscar)
-            val nC = txtBuscar.text.toString()
-            buscarCancionPorNombre(nC, todasLasCanciones)
+            var txtBuscar= findViewById<EditText>(R.id.txtBuscar)
+            var nC= txtBuscar.text.toString()
+              buscarCancionPorNombre(nC)
+
         }
     }
 
@@ -68,8 +83,8 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    private fun buscarCancionPorNombre(nombreCancion: String, todasLasCanciones: List<String>) {
-        val letra = sharedPreferencesManager.obtenerLetraCancion(nombreCancion)
+    private fun buscarCancionPorNombre(nombreCancion: String) {
+        val todasLasCanciones = sharedPreferencesManager.obtenerNombresCancionesGuardadas()
         cancionesFiltradas = todasLasCanciones.filter { it.contains(nombreCancion, ignoreCase = true) }
 
         // Actualizar el adaptador del ListView con las canciones filtradas
@@ -78,5 +93,4 @@ class MainActivity : ComponentActivity() {
         list.adapter = adapter
     }
 }
-
 
