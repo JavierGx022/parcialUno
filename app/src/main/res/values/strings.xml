@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Parcial Uno</string>
+    <string name="xml_maracas_tittle">Practica de maracas</string>
+    <string name="xml_maracas_desc">Agita el dispositivo para usar las maracas</string>
+    <string name="xml_maracas_img_desc">maracas png</string>
+
 </resources>

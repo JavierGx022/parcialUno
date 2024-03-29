@@ -9,15 +9,6 @@ import android.widget.ListView
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 
-import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.corteUno.Parcial.Logica.Cancion
 import com.corteUno.Parcial.Logica.SharedPreferencesManager
 
 
@@ -37,14 +28,14 @@ class MainActivity : ComponentActivity() {
         //Accion de boton practica tambor
         var btnPracticaTambor= findViewById<Button>(R.id.btnPTambor)
         btnPracticaTambor.setOnClickListener {
-            val intent = Intent(this, practicaTambor::class.java)
+            val intent = Intent(this, PracticaTambor::class.java)
             startActivity(intent)
         }
 
         //Accion de boton practica maraca
         var btnPracticaMaraca= findViewById<Button>(R.id.btnPMaraca)
         btnPracticaMaraca.setOnClickListener {
-            val intent = Intent(this, maraca::class.java)
+            val intent = Intent(this, PracticaMaraca::class.java)
             startActivity(intent)
         }
 
