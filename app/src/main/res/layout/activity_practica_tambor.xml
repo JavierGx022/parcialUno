@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".PracticaTambor">
+
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="213dp"
+        android:layout_height="90dp"
+        android:layout_margin="50dp"
+        android:drawablePadding="8dp"
+        android:padding="8dp"
+        android:text="Practica  Tambor"
+        android:textColor="#1C1818"
+        tools:layout_editor_absoluteX="146dp"
+        tools:layout_editor_absoluteY="91dp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Toca el tambor para usar "
+        android:textColor="#000000"
+        tools:layout_editor_absoluteX="131dp"
+        tools:layout_editor_absoluteY="166dp" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="360dp"
+        android:layout_height="370dp"
+        app:srcCompat="@drawable/tambor"
+        tools:layout_editor_absoluteX="52dp"
+        tools:layout_editor_absoluteY="203dp" />
+
+
+</LinearLayout>

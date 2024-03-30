@@ -15,9 +15,7 @@
         <activity
             android:name=".PracticaTambor"
             android:exported="false" />
-        <activity
-            android:name=".PracticaMaraca"
-            android:exported="false" />
+
         <activity
             android:name=".DetalleCancionActivity"
             android:exported="false" />

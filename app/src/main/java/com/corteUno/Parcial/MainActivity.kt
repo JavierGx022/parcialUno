@@ -35,7 +35,7 @@ class MainActivity : ComponentActivity() {
         //Accion de boton practica maraca
         var btnPracticaMaraca= findViewById<Button>(R.id.btnPMaraca)
         btnPracticaMaraca.setOnClickListener {
-            val intent = Intent(this, PracticaMaraca::class.java)
+            val intent = Intent(this, PracticaTambor::class.java)
             startActivity(intent)
         }
 
@@ -55,7 +55,7 @@ class MainActivity : ComponentActivity() {
         btnBuscar.setOnClickListener {
             var txtBuscar= findViewById<EditText>(R.id.txtBuscar)
             var nC= txtBuscar.text.toString()
-              buscarCancionPorNombre(nC)
+            buscarCancionPorNombre(nC)
 
         }
     }
