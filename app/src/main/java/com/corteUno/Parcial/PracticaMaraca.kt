@@ -7,7 +7,6 @@ import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
-import android.widget.Toast
 import java.util.*
 import kotlin.math.sqrt
 import android.media.MediaPlayer
@@ -18,7 +17,9 @@ class PracticaMaraca : AppCompatActivity() {
     private var acceleration = 0f
     private var currentAcceleration = 0f
     private var lastAcceleration = 0f
-    private var sound_maraca: MediaPlayer? = null
+    private var sound_maraca_low: MediaPlayer? = null
+    private var sound_maraca_mid: MediaPlayer? = null
+    private var sound_maraca_high: MediaPlayer? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,10 +32,9 @@ class PracticaMaraca : AppCompatActivity() {
         currentAcceleration = SensorManager.GRAVITY_EARTH
         lastAcceleration = SensorManager.GRAVITY_EARTH
 
-        sound_maraca = MediaPlayer.create(this,R.raw.sample_maraca)
-        sound_maraca?.setOnPreparedListener{
-            println("READY TO GO")
-        }
+        sound_maraca_low = MediaPlayer.create(this,R.raw.sample_maraca_low)
+        sound_maraca_mid = MediaPlayer.create(this,R.raw.sample_maraca_mid)
+        sound_maraca_high = MediaPlayer.create(this,R.raw.sample_maraca_high)
 
     }
     private val sensorListener: SensorEventListener = object : SensorEventListener {
@@ -46,9 +46,12 @@ class PracticaMaraca : AppCompatActivity() {
             currentAcceleration = sqrt((x * x + y * y + z * z).toDouble()).toFloat()
             val delta: Float = currentAcceleration - lastAcceleration
             acceleration = acceleration * 0.9f + delta
-            if (acceleration > 5) {
-                Toast.makeText(applicationContext, "movimiento detectado", Toast.LENGTH_SHORT).show()
-                sound_maraca?.start()
+            if (acceleration > 5 &&  acceleration < 10 ) {
+                sound_maraca_low?.start()
+            }else if (acceleration >= 10 &&  acceleration < 30 ) {
+                sound_maraca_mid?.start()
+            }else if (acceleration >= 30) {
+                sound_maraca_high?.start()
             }
         }
         override fun onAccuracyChanged(sensor: Sensor, accuracy: Int) {}
