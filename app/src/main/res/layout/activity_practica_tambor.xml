@@ -6,37 +6,52 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".PracticaTambor">
+    android:background="@drawable/gradient_background"
+    android:gravity="center"
+    tools:context="PracticaTambor">
 
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="213dp"
-        android:layout_height="90dp"
-        android:layout_margin="50dp"
-        android:drawablePadding="8dp"
-        android:padding="8dp"
-        android:text="Practica  Tambor"
-        android:textColor="#1C1818"
-        tools:layout_editor_absoluteX="146dp"
-        tools:layout_editor_absoluteY="91dp" />
+<TextView
+android:id="@+id/textView2"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_marginTop="50dp"
+android:padding="8dp"
+android:text="PRACTICA TAMBOR"
+android:textAlignment="center"
+android:textColor="#FFFF"
+android:textSize="28sp"
+    android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Toca el tambor para usar "
-        android:textColor="#000000"
-        tools:layout_editor_absoluteX="131dp"
-        tools:layout_editor_absoluteY="166dp" />
+<TextView
+android:id="@+id/textView4"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_marginTop="20dp"
+android:text="Toca el tambor para usar "
+android:textColor="#FFFF"
+android:textSize="20sp"
+    android:layout_gravity="center_horizontal" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="360dp"
-        android:layout_height="370dp"
-        app:srcCompat="@drawable/tambor"
-        tools:layout_editor_absoluteX="52dp"
-        tools:layout_editor_absoluteY="203dp" />
+<androidx.cardview.widget.CardView
+android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:layout_marginTop="40dp"
+    app:cardCornerRadius="200dp"
+    app:cardElevation="8dp">
 
+<ImageView
+android:id="@+id/imageView"
+android:layout_width="200dp"
+    android:layout_height="200dp"
+    android:src="@drawable/tambor"
+    android:clickable="true"
+    android:onClick="onImageClick"
+    android:scaleType="centerCrop"
+    android:padding="20dp"
+    />
 
-</LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
