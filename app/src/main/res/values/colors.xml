@@ -11,4 +11,7 @@
     <color name="btn">#13B99E</color>
     <color name="btnDelete">#F7615A</color>
 
+        <color name="color1">#FF000000</color> <!-- Color 1 -->
+        <color name="color2">#FFFFFFFF</color> <!-- Color 2 -->
+    <color name="color3">#02AFFA</color>
 </resources>

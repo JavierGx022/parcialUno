@@ -2,6 +2,9 @@ package com.corteUno.Parcial
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.view.View
+import android.view.animation.AnimationUtils
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
@@ -15,6 +18,8 @@ import com.corteUno.Parcial.Logica.SharedPreferencesManager
 class MainActivity : ComponentActivity() {
     private lateinit var sharedPreferencesManager: SharedPreferencesManager
     private lateinit var cancionesFiltradas: List<String>
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
@@ -26,6 +31,7 @@ class MainActivity : ComponentActivity() {
             startActivity(intent)
         }
         //Accion de boton practica tambor
+        
         var btnPracticaTambor= findViewById<Button>(R.id.btnPTambor)
         btnPracticaTambor.setOnClickListener {
             val intent = Intent(this, PracticaTambor::class.java)
@@ -55,10 +61,11 @@ class MainActivity : ComponentActivity() {
         btnBuscar.setOnClickListener {
             var txtBuscar= findViewById<EditText>(R.id.txtBuscar)
             var nC= txtBuscar.text.toString()
-              buscarCancionPorNombre(nC)
+            buscarCancionPorNombre(nC)
 
         }
     }
+
 
     private fun mostrarDetalleCancion(nombreCancion: String) {
         val letraCancion = sharedPreferencesManager.obtenerLetraCancion(nombreCancion)

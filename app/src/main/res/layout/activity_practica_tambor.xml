@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/gradient_background"
+    android:gravity="center"
+    tools:context="PracticaTambor">
+
+
+<TextView
+android:id="@+id/textView2"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_marginTop="50dp"
+android:padding="8dp"
+android:text="PRACTICA TAMBOR"
+android:textAlignment="center"
+android:textColor="#FFFF"
+android:textSize="28sp"
+    android:textStyle="bold" />
+
+<TextView
+android:id="@+id/textView4"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_marginTop="20dp"
+android:text="Toca el tambor para usar "
+android:textColor="#FFFF"
+android:textSize="20sp"
+    android:layout_gravity="center_horizontal" />
+
+<androidx.cardview.widget.CardView
+android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:layout_marginTop="40dp"
+    app:cardCornerRadius="200dp"
+    app:cardElevation="8dp">
+
+<ImageView
+android:id="@+id/imageView"
+android:layout_width="200dp"
+    android:layout_height="200dp"
+    android:src="@drawable/tambor"
+    android:clickable="true"
+    android:onClick="onImageClick"
+    android:scaleType="centerCrop"
+    android:padding="20dp"
+    />
+
+    </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
