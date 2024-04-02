@@ -5,6 +5,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import android.content.Intent
+import android.graphics.drawable.GradientDrawable
 import android.media.SoundPool
 import android.os.Bundle
 import android.widget.Button
@@ -15,23 +16,26 @@ import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.compose.ui.graphics.Color
 import androidx.core.content.ContextCompat
+import android.graphics.Color
 
 
 class PracticaTambor : AppCompatActivity() {
     private lateinit var soundPool: SoundPool
     private var tamborSoundId: Int = 0
-
+    private val coloresDeFondo = listOf("#FF0000", "#00FF00", "#0000FF", "#FFFF00", "#FF00FF", "#00FFFF")
     fun animateTitleColor(titleTextView: TextView) {
         val colorAnimation = ObjectAnimator.ofInt(titleTextView, "textColor", ContextCompat.getColor(this, R.color.color1), ContextCompat.getColor(this, R.color.color2),ContextCompat.getColor(this, R.color.color3) )
-        colorAnimation.duration = 1000
+        colorAnimation.duration = 1500
         colorAnimation.setEvaluator(ArgbEvaluator())
         colorAnimation.repeatCount = ObjectAnimator.INFINITE
         colorAnimation.repeatMode = ObjectAnimator.REVERSE
         colorAnimation.start()
 
     }
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_practica_tambor)
@@ -48,11 +52,13 @@ class PracticaTambor : AppCompatActivity() {
         imageView.setOnClickListener {
             val scaleAnimation = AnimationUtils.loadAnimation(this, R.anim.scale_animation)
             imageView.startAnimation(scaleAnimation)
+
             soundPool.play(tamborSoundId, 1.0f, 1.0f, 0, 0, 1.0f)
             val titleTextView = findViewById<TextView>(R.id.textView2)
             animateTitleColor(titleTextView)
             val subtitleTextView = findViewById<TextView>(R.id.textView4)
             animateTitleColor(subtitleTextView)
+
 
         }
 
